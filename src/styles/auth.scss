@@ -1,32 +1,31 @@
 #page-auth {
   align-items: stretch;
-  display: flex;
   height: 100vh;
 
   aside {
     background: #835afd;
     color: #fff;
-    display: flex;
+    display: none;
     flex: 7;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 80px;
+    padding: 12rem 8rem;
 
     img {
       max-width: 320px;
     }
 
     strong {
-      font: 700 36px "Poppins", sans-serif;
-      line-height: 42px;
-      margin-top: 16px;
+      font: 700 3.6rem "Poppins", sans-serif;
+      line-height: 4.2rem;
+      margin-top: 1.6rem;
     }
 
     p {
       color: #f8f8f8;
-      font-size: 24px;
-      line-height: 32px;
-      margin-top: 16px;
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      margin-top: 1.6rem;
     }
   }
 
@@ -35,7 +34,8 @@
     flex: 8;
     display: flex;
     justify-content: center;
-    padding: 0 32px;
+    height: 100%;
+    padding: 0 3.2rem;
   }
 
   .main-content {
@@ -51,22 +51,22 @@
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 2.4rem;
       font-family: "Poppins", sans-serif;
-      margin: 64px 0 24px;
+      margin: 6.4rem 0 2.4rem;
     }
 
     form {
       input {
         background: #fff;
         border: 1px solid #a8a8b3;
-        border-radius: 8px;
-        height: 50px;
-        padding: 0 16px;
+        border-radius: 0.8rem;
+        height: 5rem;
+        padding: 0 1.6rem;
       }
 
       button {
-        margin-top: 16px;
+        margin-top: 1.6rem;
       }
 
       button,
@@ -77,8 +77,8 @@
 
     p {
       color: #737380;
-      font-size: 14px;
-      margin-top: 16px;
+      font-size: 1.4rem;
+      margin-top: 1.6rem;
 
       a {
         color: #e559f9;
@@ -90,18 +90,18 @@
     align-items: center;
     background: #ea4335;
     border: 0;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     color: #fff;
     cursor: pointer;
     display: flex;
     font-weight: 500;
-    height: 50px;
+    height: 5rem;
     justify-content: center;
-    margin-top: 64px;
+    margin-top: 6.4rem;
     transition: filter 0.2s;
 
     img {
-      margin-right: 8px;
+      margin-right: 0.8rem;
     }
 
     &:hover {
@@ -113,15 +113,15 @@
     align-items: center;
     color: #a8a8b3;
     display: flex;
-    font-size: 14px;
-    margin: 32px 0;
+    font-size: 1.4rem;
+    margin: 3.2rem 0;
 
     &::before {
       content: "";
       background: #a8a8b3;
       flex: 1;
       height: 1px;
-      margin-right: 16px;
+      margin-right: 1.6rem;
     }
 
     &::after {
@@ -129,7 +129,19 @@
       background: #a8a8b3;
       flex: 1;
       height: 1px;
-      margin-left: 16px;
+      margin-left: 1.6rem;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    display: flex;
+
+    aside {
+      display: flex;
+    }
+
+    main {
+      height: auto;
     }
   }
 }
