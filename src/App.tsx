@@ -1,7 +1,9 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppProvider from "./contexts";
 import { AdminRoom } from "./pages/AdminRoom";
+import { Loading } from "./components/Loading";
 
 import Home from "./pages/Home";
 import NewRoom from "./pages/NewRoom";
@@ -18,6 +20,8 @@ const App: React.FC = () => {
           <Route path="/admin/rooms/:id" component={AdminRoom} />
         </Switch>
       </Router>
+      <Toaster />
+      <Loading />
     </AppProvider>
   );
 };

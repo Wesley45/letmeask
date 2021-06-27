@@ -1,5 +1,6 @@
 import React, { FormEvent } from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 
 import googleIconImg from "../assets/images/google-icon.svg";
@@ -8,11 +9,13 @@ import logoImg from "../assets/images/logo.svg";
 
 import Button from "../components/Button";
 import { useAuth } from "../hooks/useAuth";
+import { useLoading } from "../hooks/useLoading";
 import { database } from "../services/firebase";
 
 import "../styles/auth.scss";
 
 const Home: React.FC = () => {
+  const { showLoader, hideLoader } = useLoading();
   const { user, signInWithGoogle } = useAuth();
   const history = useHistory();
   const [roomCode, setRoomCode] = useState("");
@@ -32,24 +35,40 @@ const Home: React.FC = () => {
     event.preventDefault();
 
     if (roomCode.trim() === "") {
+      toast.error("Enter room code.", {
+        position: "top-right",
+      });
       return;
     }
 
     try {
+      showLoader();
+
       const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
+      hideLoader();
+
       if (!roomRef.exists()) {
-        alert("Room does not exists.");
+        toast.error("Room does not exists.", {
+          position: "top-right",
+        });
         return;
       }
 
       if (roomRef.val().endedAt) {
-        alert("Room already closed");
+        toast.error("Room already closed.", {
+          position: "top-right",
+        });
         return;
       }
 
       history.push(`/rooms/${roomCode}`);
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Server error.", {
+        position: "top-right",
+      });
+      hideLoader();
+    }
   }
 
   return (
